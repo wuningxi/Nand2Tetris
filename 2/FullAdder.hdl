@@ -11,5 +11,32 @@ CHIP FullAdder {
         carry;   // Left bit of a + b + c
 
     PARTS:
-    //// Replace this comment with your code.
+    //// My try:
+
+    //// Carry
+    //And(a=a,b=b,out=AandB);
+    //And(a=b,b=c,out=BandC);
+    //And(a=a,b=c,out=AandC);
+    //Or(a=AandB,b=BandC,out=AandBorBandC);
+    //Or(a=BandC,b=AandC,out=BandCorAndC);
+    //Or(a=AandBorBandC,b=BandCorAndC,out=carry);
+
+    //// Sum
+    //Xor(a=AandB,b=c,out=ABxorC);
+    //Xor(a=BandC,b=a,out=BCxorA);
+    //Xor(a=AandC,b=b,out=ACxorB);
+    //Xor(a=ABxorC,b=BCxorA,out=sum1);
+    //Xor(a=ACxorB,b=BCxorA,out=sum2);
+    //Or(a=sum1,b=sum2,out=sum3);
+    //And(a=AandB,b=BandC,out=AandBandC);
+    //Or(a=AandBandC,b=sum3,out=sum);
+
+
+
+    //// More elegant solution:
+    HalfAdder(a=a,b=b,sum=sum1,carry=carry1);
+    HalfAdder(a=sum1,b=c,sum=sum,carry=carry2);
+    Or(a=carry1,b=carry2,out=carry);
+
+
 }

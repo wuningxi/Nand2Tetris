@@ -4,15 +4,38 @@
 // File name: projects/1/DMux4Way.hdl
 /**
  * 4-way demultiplexor:
- * [a, b, c, d] = [in, 0, 0, 0] if sel = 00
- *                [0, in, 0, 0] if sel = 01
- *                [0, 0, in, 0] if sel = 10
- *                [0, 0, 0, in] if sel = 11
+ * [a, b, c, d] = [in, 0, 0, 0] if sel = 00 a
+ *                [0, in, 0, 0] if sel = 01 b
+ *                [0, 0, in, 0] if sel = 10 c
+ *                [0, 0, 0, in] if sel = 11 d
  */
 CHIP DMux4Way {
     IN in, sel[2];
     OUT a, b, c, d;
 
     PARTS:
-    //// Replace this comment with your code.
+    // my solution
+
+    // get DMux for first bit: [0,1] or [1,0] or [0,0]
+    // DMux (in=in,sel=sel[0],a=Afull,b=Bfull);
+    // get DMux for second bit: [0,1] or [1,0] or [0,0]
+    // DMux (in=in,sel=sel[0],a=Cfull,b=Dfull);
+
+    // problem: now we have double output, e.g. [0,1,0,1] instead of [0,1,0,0]
+    // solution: generate empty output
+    // DMux (in=false,sel=sel[0],a=Aempty,b=Bempty);
+    // DMux (in=false,sel=sel[0],a=Cempty,b=Dempty);
+
+    // combine empty/full a/b/c/d bits using Mux
+    // Mux (a=Afull,b=Aempty,sel=sel[1],out=a);
+    // Mux (a=Bfull,b=Bempty,sel=sel[1],out=b);
+    // Mux (a=Cempty,b=Cfull,sel=sel[1],out=c);
+    // Mux (a=Dempty,b=Dfull,sel=sel[1],out=d);
+
+    // much simpler solution:
+    DMux(in=in,sel=sel[1],a=ao,b=bo);
+    DMux(in=ao,sel=sel[0],a=a,b=b);
+    DMux(in=bo,sel=sel[0],a=c,b=d);
+
+
 }

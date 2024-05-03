@@ -14,5 +14,11 @@ CHIP PC {
     OUT out[16];
     
     PARTS:
-    //// Replace this comment with your code.
+    // reverse order of gates compared to if statements to achieve correct priority
+    // highest priority is first if but last gate (overwrites everything)!
+    Inc16(in=prev,out=previnc);
+    Mux16(a=prev,b=previnc,sel=inc,out=input1); //increment?
+    Mux16(a=input1,b=in,sel=load,out=input2); // load in val?
+    Mux16(a=input2,b=false,sel=reset,out=input3); // set to 0?
+    Register(in=input3,load=true,out=out,out=prev);
 }
