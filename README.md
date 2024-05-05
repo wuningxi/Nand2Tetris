@@ -9,11 +9,11 @@ The project is structured into 12 weeks:
 
 Part I: Hardware 
 
-- [Boolean Logic](https://github.com/wuningxi/Nand2Tetris/tree/master/1)- Basic logic gates like Not, And, Or, Mux, etc.
-- [Boolean Arithmetic](https://github.com/wuningxi/Nand2Tetris/tree/master/2) - HalfAdder, FullAdder, the ALU
-- [Sequential Logic](https://github.com/wuningxi/Nand2Tetris/tree/master/3) - Sequential chips, Registers, RAM
-- [Machine Language](https://github.com/wuningxi/Nand2Tetris/tree/master/4) - Machine language programming, IO devices
-- Computer Architecture
+- [Boolean Logic](https://github.com/wuningxi/Nand2Tetris/tree/master/1)- build elementary logic gates (e.g. Not, And, Or, Mux, ...) from Nand gate
+- [Boolean Arithmetic](https://github.com/wuningxi/Nand2Tetris/tree/master/2) - build HalfAdder, FullAdder, the ALU from elementary gates
+- [Sequential Logic](https://github.com/wuningxi/Nand2Tetris/tree/master/3) - build sequential chips, Registers, RAM from elementary gates and DFF gate
+- [Machine Language](https://github.com/wuningxi/Nand2Tetris/tree/master/4) - write low-level code in symbolic machine language, IO devices
+- Computer Architecture: build CPU from RAM and ALU
 
 Part II: Software 
 
