@@ -13,7 +13,7 @@ Part I: Hardware
 - [Boolean Arithmetic](https://github.com/wuningxi/Nand2Tetris/tree/master/2) - build HalfAdder, FullAdder, the ALU from elementary gates
 - [Sequential Logic](https://github.com/wuningxi/Nand2Tetris/tree/master/3) - build sequential chips, Registers, RAM from elementary gates and DFF gate
 - [Machine Language](https://github.com/wuningxi/Nand2Tetris/tree/master/4) - write low-level code in symbolic machine language, IO devices
-- Computer Architecture: build CPU from RAM and ALU
+- [Computer Architecture](https://github.com/wuningxi/Nand2Tetris/tree/master/5) - build Hack CPU from RAM and ALU
 
 Part II: Software 
 

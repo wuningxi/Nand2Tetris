@@ -25,5 +25,21 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-	//// Replace this comment with your code.
+    // address indirectly encodes which part of the RAM to use
+    // RAM/data memory (address 0 to 16383)         -->in binary: 011111111111111 to 011111111111111
+    // screen memory map (address 16384 to 24575)   -->in binary: 100000000000000 to 101111111111111
+    // keyboard memory map (address 24576)          -->in binary: 110000000000000
+    // first bit indicates if RAM or screen/keyboard
+    // second bit indicates if screen or keyboard
+
+    // pass correct part of address to memory maps
+    DMux(in=load,sel=address[14],a=loadRAM,b=loadScreen);
+    RAM16K(in=in,load=loadRAM,address=address[0..13],out=outRAM);
+    Screen(in=in,load=loadScreen,address=address[0..12],out=outScreen);
+    Keyboard(out=outKeyboard);
+
+    // return output from correct memory map
+    Mux16(a=outScreen,b=outKeyboard,sel=address[13],out=screenORkeyboard);
+    Mux16(a=outRAM,b=screenORkeyboard,sel=address[14],out=out);
+
 }
